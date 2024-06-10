@@ -19,16 +19,32 @@ for (let j = 0; j < target.length; j++) {
   })
 }
 
+
 // 댓글
 const commentBtn = document.querySelector('#commentFrm');
 const commentList = document.querySelector('#comment-list');
 const total = document.querySelector('h4 > span');
 const list = [];
+let today = new Date();
+
+let year = today.getFullYear();
+let month = ('0' + (today.getMonth() + 1)).slice(-2);
+let day = ('0' + today.getDate()).slice(-2);
+
+let hours = ('0' + today.getHours()).slice(-2);
+let minutes = ('0' + today.getMinutes()).slice(-2);
+let seconds = ('0' + today.getSeconds()).slice(-2);
+
+let comment_time = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+
+function closeTapClick() {
+  window.close();
+}
 
 function Comment(content) {
   this.userid = "user";
   this.content = content;
-  this.date = "2024-06-07";
+  this.date = comment_time;
 }
 
 function createRow(userid, content, date) {
@@ -62,7 +78,7 @@ function drawing() {
 }
 
 function totalRecord() {
-  total.innerHTML = `${list.length}`;
+  // total.innerHTML = `${list.length}`;
 }
 
 function commentBtnHandler(e) {
@@ -78,6 +94,8 @@ function commentBtnHandler(e) {
 
   drawing();
   e.target.reset();
+
+
 
 }
 

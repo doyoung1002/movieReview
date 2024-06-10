@@ -5,10 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
+  <div class="comment_box">
+    <ul class="comment">
+      <li class="comment_form">
+        <form id="commentFrm">
+          <h4>리뷰 쓰기</h4>
+          <span class="ps_box">
+            <input type="text" placeholder="리뷰를 남겨주세요." class="int" name="content" />
+          </span>
+          <input type="submit" class="btn" value="확인" />
+          <button onclick="closeTapClick()" type="button" class="btn_close">닫기</button>
+        </form>
+      </li>
+      <li id="comment-list"></li>
+    </ul>
+  </div>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
