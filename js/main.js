@@ -37,12 +37,20 @@ let seconds = ('0' + today.getSeconds()).slice(-2);
 
 let comment_time = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
 
-function closeTapClick() {
+function closeTabClick() {
   window.close();
 }
 
+function numberId() {
+  let number = Math.floor(Math.random() * 1e12).toString();
+  while (number.length < 12) {
+    number = '0' + number;
+  }
+  return number;
+}
+
 function Comment(content) {
-  this.userid = "user";
+  this.userid = numberId();
   this.content = content;
   this.date = comment_time;
 }
@@ -94,10 +102,8 @@ function commentBtnHandler(e) {
 
   drawing();
   e.target.reset();
-
-
-
 }
+
 
 totalRecord();
 commentBtn.addEventListener("submit", commentBtnHandler);
