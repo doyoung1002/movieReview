@@ -65,10 +65,9 @@
   height: 30px;
 }
 
-.comment_button,
 .btn_open {
   margin-top: 1px;
-  width: 250px;
+  width: 90px;
   height: 20px;
   display: block;
   border: none;
@@ -83,7 +82,7 @@ a {
   text-decoration: none;
 }
 
-.comment_button:hover {
+a:hover {
   cursor: pointer;
   color: black;
 }
@@ -184,6 +183,7 @@ li {
   justify-content: space-between;
   flex-direction: row;
   margin-top: 5px;
+  margin-bottom: 16px;
   width: 800px;
 }
 
@@ -264,7 +264,6 @@ li {
   background-color: white;
   color: #bababa;
   font-size: 12px;
-  margin-top: 10px;
   margin-bottom: 8px;
 }
 
@@ -283,6 +282,17 @@ li {
   background-color: white;
   color: #bababa;
   font-size: 12px;
+}
+
+.delete-btn {
+  height: 22px;
+  width: 40px;
+  background-color: white;
+  color: red;
+  border: none;
+  font-size: 16px;
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 .btn:hover,

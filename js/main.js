@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 페이지가 로드될 때 기존 댓글 불러오기
     drawing(commentListElement, list);
 
+    // 아이디
     function numberId() {
       let number = Math.floor(Math.random() * 1e12).toString();
       while (number.length < 12) {
@@ -64,19 +65,31 @@ document.addEventListener('DOMContentLoaded', function () {
       const li1 = document.createElement('li');
       const li2 = document.createElement('li');
       const li3 = document.createElement('li');
+      const deleteBtn = document.createElement('button');
 
       ul.append(li1);
       ul.append(li2);
       ul.append(li3);
+      ul.append(deleteBtn);
 
       ul.setAttribute('class', 'comment-row');
       li1.setAttribute('class', 'comment-id');
       li2.setAttribute('class', 'comment-content');
       li3.setAttribute('class', 'comment-date');
+      deleteBtn.setAttribute('class', 'delete-btn');
 
       li1.innerHTML = userid;
       li2.innerHTML = content;
       li3.innerHTML = date;
+      deleteBtn.innerHTML = 'X';
+
+      // 댓글 삭제
+
+      deleteBtn.addEventListener('click', function () {
+        list = list.filter(comment => comment.userid !== userid);
+        saveComments(movieId, list);
+        drawing(commentListElement, list);
+      });
 
       return ul;
     }
@@ -89,9 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // 로컬스토리지 댓글 저장
     function saveComments(movieId, list) {
       localStorage.setItem(`comments_${movieId}`, JSON.stringify(list));
     }
+
+    // 댓글 작성 
 
     function commentBtnHandler(e) {
       e.preventDefault();
@@ -108,5 +124,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     form.addEventListener('submit', commentBtnHandler);
+
+    // 댓글 엔터 
+
+    form.content.addEventListener('keyPress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        commentBtnHandler(e);
+      }
+    });
   });
 });
